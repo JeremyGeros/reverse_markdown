@@ -2,13 +2,15 @@ module ReverseMarkdown
   module Converters
     class Base
       def treat_children(node)
-        node.children.inject('') do |memo, child|
-          memo << treat(child)
+        node.children.each_with_index.inject('') do |memo, pair|
+          child = pair[0]
+          index = pair[1]
+          memo << treat(child, index)
         end
       end
 
-      def treat(node)
-        ReverseMarkdown::Converters.lookup(node.name).convert(node)
+      def treat(node, index)
+        ReverseMarkdown::Converters.lookup(node.name).convert(node, index)
       end
 
       def escape_keychars(string)

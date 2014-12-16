@@ -1,7 +1,7 @@
 module ReverseMarkdown
   module Converters
     class Del < Base
-      def convert(node)
+      def convert(node, index)
         content = treat_children(node)
         if disabled? || content.strip.empty? || already_crossed_out?(node)
           content

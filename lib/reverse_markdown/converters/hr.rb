@@ -1,7 +1,7 @@
 module ReverseMarkdown
   module Converters
     class Hr < Base
-      def convert(node)
+      def convert(node, index)
         "\n* * *\n"
       end
     end

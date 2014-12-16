@@ -3,7 +3,7 @@ require 'base64'
 module ReverseMarkdown
   module Converters
     class Pre < Base
-      def convert(node)
+      def convert(node, index)
         if ReverseMarkdown.config.github_flavored
           "```\n" << node.text.strip << "\n```\n"
         else

@@ -1,7 +1,7 @@
 module ReverseMarkdown
   module Converters
     class Drop < Base
-      def convert(node)
+      def convert(node, index)
         ''
       end
     end

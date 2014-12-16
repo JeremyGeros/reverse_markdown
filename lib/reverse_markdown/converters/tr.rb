@@ -1,10 +1,10 @@
 module ReverseMarkdown
   module Converters
     class Tr < Base
-      def convert(node)
+      def convert(node, index)
         content = treat_children(node).rstrip
         result  = "|#{content}\n"
-        table_header_row?(node) ? result + underline_for(node) : result
+        (table_header_row?(node) || index == 0) ? result + underline_for(node) : result
       end
 
       def table_header_row?(node)

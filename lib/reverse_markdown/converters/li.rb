@@ -1,7 +1,7 @@
 module ReverseMarkdown
   module Converters
     class Li < Base
-      def convert(node)
+      def convert(node, index)
         content     = treat_children(node)
         indentation = indentation_for(node)
         prefix      = prefix_for(node)

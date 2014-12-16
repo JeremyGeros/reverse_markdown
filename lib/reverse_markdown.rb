@@ -41,7 +41,7 @@ module ReverseMarkdown
 
     root or return ''
     config.apply(options)
-    result = ReverseMarkdown::Converters.lookup(root.name).convert(root)
+    result = ReverseMarkdown::Converters.lookup(root.name).convert(root, 0)
     config.reset
     cleaner.tidy(result)
   end

@@ -1,7 +1,7 @@
 module ReverseMarkdown
   module Converters
     class Td < Base
-      def convert(node)
+      def convert(node, index)
         content = treat_children(node)
         " #{content} |"
       end

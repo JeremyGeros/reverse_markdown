@@ -1,7 +1,7 @@
 module ReverseMarkdown
   module Converters
     class Em < Base
-      def convert(node)
+      def convert(node, index)
         content = treat_children(node)
         if content.strip.empty? || already_italic?(node)
           content

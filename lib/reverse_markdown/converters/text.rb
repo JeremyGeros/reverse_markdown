@@ -1,7 +1,7 @@
 module ReverseMarkdown
   module Converters
     class Text < Base
-      def convert(node, options = {})
+      def convert(node, index, options = {})
         if node.text.strip.empty?
           treat_empty(node)
         else

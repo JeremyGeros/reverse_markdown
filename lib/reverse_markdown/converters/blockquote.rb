@@ -1,7 +1,7 @@
 module ReverseMarkdown
   module Converters
     class Blockquote < Base
-      def convert(node)
+      def convert(node, index)
         content = treat_children(node).strip
         content = ReverseMarkdown.cleaner.remove_newlines(content)
         '> ' << content.lines.to_a.join('> ')
