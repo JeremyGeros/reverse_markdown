@@ -3,7 +3,7 @@ module ReverseMarkdown
     class Td < Base
       def convert(node, index)
         content = treat_children(node)
-        " #{content if content.strip != ""} |"
+        " #{content if content.gsub("&nbsp;", "").strip != ""} |"
       end
     end
 
