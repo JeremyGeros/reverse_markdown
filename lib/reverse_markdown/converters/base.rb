@@ -2,6 +2,7 @@ module ReverseMarkdown
   module Converters
     class Base
       def treat_children(node)
+        @table_did_begin = false
         node.children.each_with_index.inject('') do |memo, pair|
           child = pair[0]
           index = pair[1]
@@ -11,6 +12,24 @@ module ReverseMarkdown
 
       def treat(node, index)
         ReverseMarkdown::Converters.lookup(node.name).convert(node, index)
+      end
+      
+      def table_did_begin
+        @table_has_heading = false
+        @table_did_begin = true
+      end
+      
+      def table_did_end
+        @table_did_begin = false
+        @table_has_heading = false
+      end
+      
+      def table_has_heading
+        @table_has_heading
+      end
+      
+      def did_insert_table_heading
+        @table_has_heading = true
       end
 
       def escape_keychars(string)

@@ -4,7 +4,7 @@ module ReverseMarkdown
       def convert(node, index)
         content = treat_children(node).rstrip
         result  = "|#{content}\n"
-        (table_header_row?(node) || index == 0) ? result + underline_for(node) : result
+        (table_header_row?(node) || index == 0 || !table_has_heading) ? result + underline_for(node) : result
       end
 
       def table_header_row?(node)
@@ -12,6 +12,7 @@ module ReverseMarkdown
       end
 
       def underline_for(node)
+        did_insert_table_heading
         "| " + (['---'] * node.element_children.size).join(' | ') + " |\n"
       end
     end
