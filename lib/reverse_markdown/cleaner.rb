@@ -1,11 +1,11 @@
 module ReverseMarkdown
   class Cleaner
 
-    def tidy(string)
+    def tidy(string, options)
       result = remove_inner_whitespaces(string)
       result = remove_newlines(result)
       result = remove_leading_newlines(result)
-      result = clean_tag_borders(result)
+      result = clean_tag_borders(result, options)
       clean_punctuation_characters(result)
     end
 
@@ -29,7 +29,7 @@ module ReverseMarkdown
     # more asterisks. Ensure that only one whitespace occurs
     # in the border area.
     # Same for underscores and brackets.
-    def clean_tag_borders(string)
+    def clean_tag_borders(string, options)
       result = string.gsub(/\s?\*{2,}.*?\*{2,}\s?/) do |match|
         preserve_border_whitespaces(match, default_border: ' ') do
           match.strip.sub('** ', '**').sub(' **', '**')
@@ -50,7 +50,11 @@ module ReverseMarkdown
 
       result.gsub(/\s?\[.*?\]\s?/) do |match|
         preserve_border_whitespaces(match) do
-          match.strip.sub('[ ', '[').sub(' ]', ']')
+          if options[:github_flavored]
+            match.strip.sub('[', '[').sub(']', ']')
+          else
+            match.strip.sub('[ ', '[').sub(' ]', ']')
+          end
         end
       end
     end

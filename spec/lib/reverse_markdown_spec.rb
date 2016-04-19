@@ -34,4 +34,11 @@ describe ReverseMarkdown do
       expect(ReverseMarkdown.config.github_flavored).to eq true
     end
   end
+
+
+  it 'keeps spaces inside []' do
+    result = ReverseMarkdown.convert("<p>[ ]</p>", unknown_tags: 
+    :bypass, github_flavored: true)
+    expect(result).to eq "[ ]\n\n"
+  end
 end
