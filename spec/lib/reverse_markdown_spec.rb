@@ -41,4 +41,11 @@ describe ReverseMarkdown do
     :bypass, github_flavored: true)
     expect(result).to eq "[ ]\n\n"
   end
+
+  it 'converts &nbsp; to space' do
+    result = ReverseMarkdown.convert("<p>[&nbsp;]</p>", unknown_tags: 
+    :bypass, github_flavored: true)
+    expect(result).to eq "[ ]\n\n"
+  end
+
 end

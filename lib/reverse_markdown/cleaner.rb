@@ -6,6 +6,7 @@ module ReverseMarkdown
       result = remove_newlines(result)
       result = remove_leading_newlines(result)
       result = clean_tag_borders(result, options)
+      result = remove_non_breaking_whitespace(result)
       clean_punctuation_characters(result)
     end
 
@@ -23,6 +24,10 @@ module ReverseMarkdown
           line.strip.gsub(/[ \t]{2,}/, ' ')
         end
       end
+    end
+
+    def remove_non_breaking_whitespace(string)
+      string.gsub(/&nbsp;/, ' ')
     end
 
     # Find non-asterisk content that is enclosed by two or
