@@ -5,7 +5,16 @@ module ReverseMarkdown
         content     = treat_children(node)
         indentation = indentation_for(node)
         prefix      = prefix_for(node)
-        "#{indentation}#{prefix}#{content}\n"
+
+        content.strip.lines.each_with_index.map do |line, index|
+          if index == 0
+            "#{indentation}#{prefix}#{line.sub(/\n*/m, "")}"
+          elsif line =~ /^\s*$/
+            "#{line}"
+          else
+            "  #{indentation}#{line.sub(/\n*/m, "")}"
+          end
+        end.join + "\n"
       end
 
       def prefix_for(node)
