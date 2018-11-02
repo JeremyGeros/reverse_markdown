@@ -1,8 +1,5 @@
-require 'codeclimate-test-reporter'
-CodeClimate::TestReporter.start
-
 require 'simplecov'
-# require 'byebug'
+require 'byebug'
 
 SimpleCov.adapters.define 'gem' do
   add_filter '/spec/'
