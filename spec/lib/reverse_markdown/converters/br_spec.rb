@@ -4,6 +4,6 @@ describe ReverseMarkdown::Converters::Br do
   let(:converter) { ReverseMarkdown::Converters::Br.new }
 
   it 'just converts into two spaces and a newline' do
-    expect(converter.convert(:anything)).to eq "  \n"
+    expect(converter.convert(:anything, 0)).to eq "  \n"
   end
 end

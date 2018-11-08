@@ -8,7 +8,5 @@ module ReverseMarkdown
         content
       end
     end
-
-    register :table, Table.new
   end
 end

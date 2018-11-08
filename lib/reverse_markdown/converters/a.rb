@@ -13,7 +13,5 @@ module ReverseMarkdown
         end
       end
     end
-
-    register :a, A.new
   end
 end

@@ -5,7 +5,5 @@ module ReverseMarkdown
         "`#{node.text}`"
       end
     end
-
-    register :code, Code.new
   end
 end

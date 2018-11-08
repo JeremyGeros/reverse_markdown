@@ -31,7 +31,5 @@ module ReverseMarkdown
         '  ' * [length - 1, 0].max
       end
     end
-
-    register :li, Li.new
   end
 end

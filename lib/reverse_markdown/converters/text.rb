@@ -1,7 +1,7 @@
 module ReverseMarkdown
   module Converters
     class Text < Base
-      def convert(node, index, options = {})
+      def convert(node, index)
         if node.text.strip.empty?
           treat_empty(node)
         else
@@ -42,7 +42,5 @@ module ReverseMarkdown
         text.tr("\n\t", ' ').squeeze(' ')
       end
     end
-
-    register :text, Text.new
   end
 end

@@ -6,8 +6,5 @@ module ReverseMarkdown
         " #{content if content.gsub("&nbsp;", "").strip != ""} |"
       end
     end
-
-    register :td, Td.new
-    register :th, Td.new
   end
 end

@@ -3,11 +3,9 @@ module ReverseMarkdown
     class Blockquote < Base
       def convert(node, index)
         content = treat_children(node).strip
-        content = ReverseMarkdown.cleaner.remove_newlines(content)
+        content = ReverseMarkdown::Cleaner.new.remove_newlines(content)
         '> ' << content.lines.to_a.join('> ')
       end
     end
-
-    register :blockquote, Blockquote.new
   end
 end

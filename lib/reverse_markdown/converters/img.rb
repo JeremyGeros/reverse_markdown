@@ -8,7 +8,5 @@ module ReverseMarkdown
         " ![#{alt}](#{src}#{title})"
       end
     end
-
-    register :img, Img.new
   end
 end

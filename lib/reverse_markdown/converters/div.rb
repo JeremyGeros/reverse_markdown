@@ -5,7 +5,5 @@ module ReverseMarkdown
         "\n" << treat_children(node) << "\n"
       end
     end
-
-    register :div, Div.new
   end
 end
