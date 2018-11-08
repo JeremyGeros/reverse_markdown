@@ -7,8 +7,8 @@ module ReverseMarkdown
       @converters = ConverterRegistry.new(@config)
     end
     
-    def register(tag, converter)
-      @converters.register(tag, converter)
+    def register(tags, converter)
+      @converters.register(tags, converter)
       self
     end
 

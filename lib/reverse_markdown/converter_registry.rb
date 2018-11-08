@@ -7,9 +7,12 @@ module ReverseMarkdown
       @converters = {}
     end
 
-    def register(tag_name, converter)
+    def register(tag_names, converter)
       converter.converters = self
-      @converters[tag_name.to_sym] = converter
+
+      Array(tag_names).each do |tag_name|
+        @converters[tag_name.to_sym] = converter
+      end
     end
 
     def lookup(tag_name)
