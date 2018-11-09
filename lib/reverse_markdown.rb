@@ -34,9 +34,10 @@ require 'reverse_markdown/converter'
 
 module ReverseMarkdown
   def self.new(options = {})
-    converter = ReverseMarkdown::Converter.new(options)
-    register_defaults(converter, github_flavored: options[:github_flavored])
-    converter
+    ReverseMarkdown::Converter.new(options) do |converter|
+      register_defaults(converter, github_flavored: options[:github_flavored])
+      yield converter if block_given?
+    end
   end
 
   def self.convert(input, options = {})

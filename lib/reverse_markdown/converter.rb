@@ -5,6 +5,7 @@ module ReverseMarkdown
       @config = Config.new
       @config.apply(options)
       @converters = ConverterRegistry.new(@config)
+      yield self if block_given?
     end
     
     def register(tags, converter)

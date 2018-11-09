@@ -76,18 +76,6 @@ Just pass your chosen configuration options in after the input
 ReverseMarkdown.convert(input, unknown_tags: :raise, github_flavored: true)
 ```
 
-### Preconfigure
-
-Or configure it block style on a initializer level
-
-```ruby
-ReverseMarkdown.config do |config|
-  config.unknown_tags     = :bypass
-  config.github_flavored  = true
-end
-```
-
-
 # Related stuff
 
 - [Write custom converters](https://github.com/xijo/reverse_markdown/wiki/Write-your-own-converter) - Wiki entry about how to write your own converter
