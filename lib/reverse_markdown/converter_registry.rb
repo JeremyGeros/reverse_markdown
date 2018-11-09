@@ -22,7 +22,7 @@ module ReverseMarkdown
     private
 
     def create_default_converter
-      case @config.unknown_tags.to_sym
+      case @config.unknown_tags&.to_sym
       when :pass_through
         ReverseMarkdown::Converters::PassThrough.new
       when :drop
