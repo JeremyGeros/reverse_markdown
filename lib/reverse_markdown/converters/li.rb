@@ -10,7 +10,7 @@ module ReverseMarkdown
           if index == 0
             "#{indentation}#{prefix}#{line.sub(/\n*/m, "")}"
           elsif line =~ /^\s*$/
-            "#{line}"
+            line
           else
             "  #{indentation}#{line.sub(/\n*/m, "")}"
           end

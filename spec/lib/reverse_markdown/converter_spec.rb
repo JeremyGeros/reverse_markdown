@@ -11,7 +11,7 @@ describe ReverseMarkdown::Converter do
     end.new)
 
     input = "<div><p>some text</div></p>"
-    expect(converter.convert("<div><p>some text</p></div>")).to eq("custom\n")
+    expect(converter.convert(input)).to eq("custom\n")
     expect(ReverseMarkdown.convert(input)).to eq("some text\n\n")
   end
 end
