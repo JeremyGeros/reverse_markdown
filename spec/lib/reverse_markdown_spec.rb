@@ -20,22 +20,6 @@ describe ReverseMarkdown do
     expect(ReverseMarkdown.convert(nil)).to eq ''
   end
 
-  describe '#config' do
-    it 'stores a given configuration option' do
-      ReverseMarkdown.config.github_flavored = true
-      expect(ReverseMarkdown.config.github_flavored).to eq true
-    end
-
-    it 'can be used as a block configurator as well' do
-      ReverseMarkdown.config do |config|
-        expect(config.github_flavored).to eq false
-        config.github_flavored = true
-      end
-      expect(ReverseMarkdown.config.github_flavored).to eq true
-    end
-  end
-
-
   it 'keeps spaces inside []' do
     result = ReverseMarkdown.convert("<p>[ ]</p>", unknown_tags: 
     :bypass, github_flavored: true)

@@ -4,14 +4,14 @@ module ReverseMarkdown
   module Converters
     class Pre < Base
       def convert(node, index)
-        if ReverseMarkdown.config.github_flavored
-          "```\n" << node.text.strip << "\n```\n"
-        else
-          "\n\n    " << node.text.strip.lines.to_a.join("    ") << "\n\n"
-        end
+        "\n\n    " << node.text.strip.lines.to_a.join("    ") << "\n\n"
       end
     end
 
-    register :pre, Pre.new
+    class GithubPre < Base
+      def convert(node, index)
+        "```\n" << node.text.strip << "\n```\n"
+      end
+    end
   end
 end

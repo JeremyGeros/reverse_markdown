@@ -1,8 +1,8 @@
 module ReverseMarkdown
   module Converters
-    class P < Base
+    class Raise < Base
       def convert(node, index)
-        "\n\n" << treat_children(node).strip << "\n\n"
+        raise UnknownTagError, "unknown tag: #{node.name}"
       end
     end
   end

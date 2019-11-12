@@ -5,7 +5,5 @@ module ReverseMarkdown
         "  \n"
       end
     end
-
-    register :br, Br.new
   end
 end

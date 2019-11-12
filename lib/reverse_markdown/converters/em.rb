@@ -14,8 +14,5 @@ module ReverseMarkdown
         node.ancestors('italic').size > 0 || node.ancestors('em').size > 0
       end
     end
-
-    register :em, Em.new
-    register :i,  Em.new
   end
 end

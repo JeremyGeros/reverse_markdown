@@ -5,7 +5,5 @@ module ReverseMarkdown
         "\n* * *\n"
       end
     end
-
-    register :hr, Hr.new
   end
 end

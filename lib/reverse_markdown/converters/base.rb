@@ -1,6 +1,8 @@
 module ReverseMarkdown
   module Converters
     class Base
+      attr_writer :converters
+
       def treat_children(node)
         @table_did_begin = false
         node.children.each_with_index.inject('') do |memo, pair|
@@ -11,7 +13,7 @@ module ReverseMarkdown
       end
 
       def treat(node, index)
-        ReverseMarkdown::Converters.lookup(node.name).convert(node, index)
+        @converters.lookup(node.name).convert(node, index)
       end
       
       def table_did_begin

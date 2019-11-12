@@ -16,7 +16,5 @@ module ReverseMarkdown
         "| " + (['---'] * node.element_children.size).join(' | ') + " |\n"
       end
     end
-
-    register :tr, Tr.new
   end
 end

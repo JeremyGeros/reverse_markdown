@@ -1,38 +1,30 @@
 require 'spec_helper'
 
 describe ReverseMarkdown::Converters::Del do
-  let(:converter) { ReverseMarkdown::Converters::Del.new }
+  let(:converter) do
+    ReverseMarkdown.new(github_flavored: github_flavored)
+  end
 
   context 'with github_flavored = true' do
-    before { ReverseMarkdown.config.github_flavored = true }
+    let(:github_flavored) { true }
 
     it 'converts the input as expected' do
-      input = Nokogiri::XML.parse('<del>deldeldel</del>').root
-      expect(converter.convert(input, 0)).to eq '~~deldeldel~~'
+      input = '<del>deldeldel</del>'
+      expect(converter.convert(input)).to eq ' ~~deldeldel~~ '
     end
 
     it 'skips empty tags' do
-      input = Nokogiri::XML.parse('<del></del>').root
-      expect(converter.convert(input, 0)).to eq ''
-    end
-
-    it 'knows about its enabled/disabled state' do
-      expect(converter).to be_enabled
-      expect(converter).not_to be_disabled
+      input = '<del></del>'
+      expect(converter.convert(input)).to eq ''
     end
   end
 
   context 'with github_flavored = false' do
-    before { ReverseMarkdown.config.github_flavored = false }
+    let(:github_flavored) { false }
 
     it 'does not convert anything' do
-      input = Nokogiri::XML.parse('<del>deldeldel</del>').root
-      expect(converter.convert(input, 0)).to eq 'deldeldel'
-    end
-
-    it 'knows about its enabled/disabled state' do
-      expect(converter).not_to be_enabled
-      expect(converter).to be_disabled
+      input = '<del>deldeldel</del>'
+      expect(converter.convert(input)).to eq 'deldeldel'
     end
   end
 end
