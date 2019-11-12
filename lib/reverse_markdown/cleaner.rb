@@ -65,7 +65,7 @@ module ReverseMarkdown
     end
 
     def clean_punctuation_characters(string)
-      string.gsub(/(\*\*|~~|__)\s([\.!\?'"])/, "\\1".strip + "\\2")
+      string.gsub(/(?<!^)(\*\*|~~|__)\s([\.!\?'"])/, "\\1\\2")
     end
 
     private

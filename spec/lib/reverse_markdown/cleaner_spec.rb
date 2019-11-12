@@ -49,9 +49,21 @@ describe ReverseMarkdown::Cleaner do
 
   describe '#clean_punctuation_characters' do
     it 'removes whitespace between tag end and punctuation characters' do
-      input = "**fat** . ~~strike~~ ? __italic__ ! "
+      input = "**fat** . ~~strike~~ ? \n__italic__ ! "
       result = cleaner.clean_punctuation_characters(input)
-      expect(result).to eq "**fat**. ~~strike~~? __italic__! "
+      expect(result).to eq "**fat**. ~~strike~~? \n__italic__! "
+    end
+
+    it 'handles a newline starting with bold text' do
+      input = "test **bold** !\n* test\n** \"asdf\"\nasdf asdf\n** \"My bold text\"** My not bold text"
+      result = cleaner.clean_punctuation_characters(input)
+      expect(result).to eq "test **bold**!\n* test\n** \"asdf\"\nasdf asdf\n** \"My bold text\"** My not bold text"
+    end
+
+    it 'keeps whitespace between bullets and punctuation' do
+      input = "** \"some quoted text\""
+      result = cleaner.clean_punctuation_characters(input)
+      expect(result).to eq input
     end
   end
 
