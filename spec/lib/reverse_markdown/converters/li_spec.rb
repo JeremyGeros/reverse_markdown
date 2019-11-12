@@ -6,7 +6,7 @@ describe ReverseMarkdown::Converters::Li do
 
   it 'does not fail without a valid parent context' do
     input = Nokogiri::XML.parse("<li>foo</li>").root
-    result = converter.convert(input)
+    result = converter.convert(input, 0)
     expect(result).to eq "- foo\n"
   end
 
