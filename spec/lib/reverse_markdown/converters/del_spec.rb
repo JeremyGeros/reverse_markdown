@@ -10,12 +10,12 @@ describe ReverseMarkdown::Converters::Del do
 
     it 'converts the input as expected' do
       input = '<del>deldeldel</del>'
-      expect(converter.convert(input)).to eq ' ~~deldeldel~~ '
+      expect(converter.convert(input, 0)).to eq ' ~~deldeldel~~ '
     end
 
     it 'skips empty tags' do
       input = '<del></del>'
-      expect(converter.convert(input)).to eq ''
+      expect(converter.convert(input, 0)).to eq ''
     end
   end
 
@@ -24,7 +24,7 @@ describe ReverseMarkdown::Converters::Del do
 
     it 'does not convert anything' do
       input = '<del>deldeldel</del>'
-      expect(converter.convert(input)).to eq 'deldeldel'
+      expect(converter.convert(input, 0)).to eq 'deldeldel'
     end
   end
 end

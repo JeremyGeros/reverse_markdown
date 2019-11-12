@@ -2,8 +2,6 @@
 
 Transform html into markdown. Useful for example if you want to import html into your markdown based application.
 
-[![Build Status](https://secure.travis-ci.org/xijo/reverse_markdown.png?branch=master)](https://travis-ci.org/xijo/reverse_markdown) [![Gem Version](https://badge.fury.io/rb/reverse_markdown.png)](http://badge.fury.io/rb/reverse_markdown) [![Code Climate](https://codeclimate.com/github/xijo/reverse_markdown.png)](https://codeclimate.com/github/xijo/reverse_markdown) [![Code Climate](https://codeclimate.com/github/xijo/reverse_markdown/coverage.png)](https://codeclimate.com/github/xijo/reverse_markdown)
-
 ## Changelog
 
 See [Change Log](CHANGELOG.md)
@@ -35,7 +33,6 @@ gem 'reverse_markdown'
 - Inline and block code is supported
 - Supports blockquote
 
-
 # Usage
 
 ## Ruby
@@ -46,7 +43,7 @@ You can convert html content as string or Nokogiri document:
 input  = '<strong>feelings</strong>'
 result = ReverseMarkdown.convert input
 result.inspect # " **feelings** "
-````
+```
 
 ## Commandline
 
@@ -55,7 +52,7 @@ It's also possible to convert html files to markdown using the binary:
 ```sh
 $ reverse_markdown file.html > file.md
 $ cat file.html | reverse_markdown > file.md
-````
+```
 
 ## Configuration
 
@@ -76,6 +73,17 @@ Just pass your chosen configuration options in after the input
 ReverseMarkdown.convert(input, unknown_tags: :raise, github_flavored: true)
 ```
 
+### Preconfigure
+
+Or configure it block style on a initializer level
+
+```ruby
+ReverseMarkdown.config do |config|
+  config.unknown_tags     = :bypass
+  config.github_flavored  = true
+end
+```
+
 # Related stuff
 
 - [Write custom converters](https://github.com/xijo/reverse_markdown/wiki/Write-your-own-converter) - Wiki entry about how to write your own converter
@@ -84,7 +92,6 @@ ReverseMarkdown.convert(input, unknown_tags: :raise, github_flavored: true)
 - [markdown syntax](http://daringfireball.net/projects/markdown) - The markdown syntax specification
 - [github flavored markdown](https://help.github.com/articles/github-flavored-markdown) - Githubs extension to markdown
 - [wmd-editor](http://wmd-editor.com) - Markdown flavored text editor
-
 
 # Thanks
 
