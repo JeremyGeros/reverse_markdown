@@ -13,7 +13,9 @@ module ReverseMarkdown
       end
 
       def treat(node, index)
-        @converters.lookup(node.name).convert(node, index)
+        # Handle nil here be transforming it to empty string
+        # This can be nil when it's an empty table.
+        @converters.lookup(node.name).convert(node, index) || ''
       end
       
       def table_did_begin
