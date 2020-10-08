@@ -28,7 +28,11 @@ describe ReverseMarkdown do
     10. First level
         - Second level
         - Second level
+
+          With a paragraph
           1. Third level
+
+             With a paragraph
     11. First level
 
     some text after the list
